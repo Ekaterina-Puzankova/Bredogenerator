@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block title %}Управление ботом{% endblock %}
+{% block content %}
+   <h1>Привет, {{ username }}!</h1>
+    <h1>Управление ботом</h1>
+
+    {% if session.user_role >= 2 %}
+        <a href="/stats" class="btn btn-primary">Просмотреть статистику</a>
+    {% endif %}
+
+    {% if session.user_role >= 1 %}
+        <a href="/send_message" class="btn btn-secondary">Отправить сообщение</a>
+    {% endif %}
+   
+   {% if session.user_role >= 0 %}
+         <a href="/add_wish" class="btn btn-info">Добавить пожелание</a>
+     {% endif %}
+
+     <a href="{{ url_for('logout') }}" class="btn btn-danger">Выйти</a>
+{% endblock %}
